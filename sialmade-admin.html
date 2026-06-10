@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>SialMade Admin — Control Suite</title>
+<title>SialMade Admin — Login</title>
+<script>
+(function(){
+  var entered = sessionStorage.getItem('sialmade_admin');
+  if(entered === 'yes') return;
+  document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('adminLoginOverlay').style.display = 'flex';
+  });
+})();
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -186,6 +195,24 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
 </style>
 </head>
 <body>
+
+<!-- ADMIN LOGIN OVERLAY -->
+<div id="adminLoginOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:center;justify-content:center;">
+  <div style="background:#0f0f0f;border:1px solid #2a2a2a;border-radius:16px;padding:40px;width:380px;max-width:95vw;text-align:center;">
+    <div style="font-size:22px;font-weight:900;margin-bottom:4px;color:#f0f0f0">Sial<span style="color:#c9a84c">Made</span></div>
+    <div style="font-size:11px;font-weight:700;color:#ef4444;letter-spacing:1px;text-transform:uppercase;margin-bottom:28px">Admin Control Suite</div>
+    <div style="font-size:13px;color:#777;margin-bottom:18px">Enter your admin password to continue</div>
+    <input id="adminPassInput" type="password" placeholder="Password"
+      style="width:100%;background:#161616;border:1px solid #2a2a2a;border-radius:8px;padding:12px 14px;color:#f0f0f0;font-size:14px;outline:none;margin-bottom:12px;text-align:center;letter-spacing:2px;"
+      onkeydown="if(event.key==='Enter')checkAdminPass()"
+    />
+    <div id="adminPassError" style="color:#ef4444;font-size:12px;margin-bottom:10px;display:none;">Incorrect password. Try again.</div>
+    <button onclick="checkAdminPass()"
+      style="width:100%;background:#c9a84c;border:none;border-radius:8px;padding:13px;color:#000;font-size:14px;font-weight:700;cursor:pointer;">
+      Login to Admin Panel
+    </button>
+  </div>
+</div>
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
@@ -468,6 +495,24 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
 </div>
 
 <script>
+// Admin password
+function checkAdminPass(){
+  var val = document.getElementById('adminPassInput').value;
+  if(val === 'sialmade2025'){
+    sessionStorage.setItem('sialmade_admin','yes');
+    document.getElementById('adminLoginOverlay').style.display='none';
+    document.title='SialMade Admin — Control Suite';
+  } else {
+    document.getElementById('adminPassError').style.display='block';
+    document.getElementById('adminPassInput').value='';
+    document.getElementById('adminPassInput').focus();
+  }
+}
+// Show overlay if not authenticated
+if(sessionStorage.getItem('sialmade_admin') !== 'yes'){
+  document.getElementById('adminLoginOverlay').style.display='flex';
+}
+
 let currentVendor='',currentRowId='';
 function openReview(name,cat,allOk){
   currentVendor=name;
