@@ -182,6 +182,28 @@ header{
 .cb{display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border2);border-radius:7px;padding:9px 14px;font-size:11.5px;font-weight:700;color:var(--white)}
 .cb small{display:block;font-size:10px;color:var(--dim2);font-weight:400;margin-top:1px}
 
+/* ── SUB-NAV BAR ── */
+.sub-nav{
+  position:sticky;top:62px;z-index:99;
+  background:rgba(0,0,0,.96);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  height:40px;display:flex;align-items:center;padding:0 28px;gap:0;
+}
+.sialkot-live{display:flex;align-items:center;gap:8px;padding:0 18px 0 0;border-right:1px solid var(--border2);flex-shrink:0}
+.live-ring{position:relative;width:9px;height:9px;flex-shrink:0}
+.live-ring::before{content:'';position:absolute;inset:0;border-radius:50%;background:var(--green)}
+.live-ring::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid var(--green);animation:liveRing 2s infinite;opacity:0}
+@keyframes liveRing{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+.live-label{font-size:12px;font-weight:800;color:var(--white)}
+.live-online{font-size:11px;color:var(--green);font-weight:600}
+.live-online b{font-size:12px}
+.sub-nav-links{display:flex;align-items:center;height:100%;flex:1}
+.sn-item{display:flex;align-items:center;gap:6px;padding:0 16px;height:100%;font-size:12px;font-weight:600;color:var(--dim2);text-decoration:none;border-right:1px solid var(--border2);cursor:pointer;transition:color .15s,background .15s;white-space:nowrap}
+.sn-item:hover{color:var(--white);background:rgba(255,255,255,.03)}
+.sn-item .sn-icon{font-size:14px}
+.sn-item.highlight{color:var(--gold)}
+.sn-item.highlight:hover{color:var(--gold2)}
+
 /* ── FOOTER ── */
 footer{border-top:1px solid var(--border);padding:40px 48px;background:#030303}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:28px}
@@ -245,6 +267,20 @@ footer{border-top:1px solid var(--border);padding:40px 48px;background:#030303}
     <a href="sialmade-seller.html" class="btn-reg">Register →</a>
   </div>
 </header>
+
+<!-- ── SUB-NAV BAR ── -->
+<div class="sub-nav">
+  <div class="sialkot-live">
+    <span class="live-ring"></span>
+    <span class="live-label">Sialkot Live</span>
+    <span class="live-online"><b id="liveCount">2</b> online now</span>
+  </div>
+  <div class="sub-nav-links">
+    <a href="#" class="sn-item" onclick="document.querySelector('.cat-grid').scrollIntoView({behavior:'smooth'});return false"><span class="sn-icon">🗂</span> Source by Category</a>
+    <a href="#" class="sn-item highlight" onclick="openChat('RFQ Team');return false"><span class="sn-icon">📋</span> Request for Quotation</a>
+    <a href="#" class="sn-item" onclick="document.querySelector('.sup-grid').scrollIntoView({behavior:'smooth'});return false"><span class="sn-icon">🏭</span> Top Manufacturers</a>
+  </div>
+</div>
 
 <!-- ── MAIN 2-COLUMN ── -->
 <div class="main-wrap">
@@ -646,6 +682,22 @@ document.getElementById('moqT').addEventListener('change',function(){
 
 // Footer links
 document.querySelectorAll('.footer-col a[href="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector('.sup-grid').scrollIntoView({behavior:'smooth'})}));
+
+// Sialkot Live counter
+(function(){
+  const counts=[1,2,2,3,1,2,1,3,2,1,2,3];
+  let idx=Math.floor(Math.random()*counts.length);
+  function tick(){
+    const el=document.getElementById('liveCount');
+    if(!el)return;
+    idx=(idx+1)%counts.length;
+    el.style.transition='opacity .3s';
+    el.style.opacity='0';
+    setTimeout(()=>{el.textContent=counts[idx];el.style.opacity='1'},300);
+    setTimeout(tick,6000+Math.random()*8000);
+  }
+  setTimeout(tick,7000);
+})();
 
 // Apply featured order set by admin panel
 (function applyFeaturedOrder(){
