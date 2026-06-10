@@ -395,7 +395,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
               Listing Cap: <strong>UNLIMITED / 150 active</strong> · Gold Badge: <strong style="color:var(--gold)">YES</strong> · Status: <strong style="color:var(--green)">ACTIVE</strong><br/>
               B2B Reels: <strong>Unlimited</strong> · SialStudio Shoot: <strong>Included</strong> · Front Page Spotlight: <strong>Yes</strong>
             </div>
-            <div class="ti-footer"><div class="ti-count">Active sellers: <strong>48</strong></div><button class="edit-btn" onclick="alert('Tier editor: Platinum')">Edit</button></div>
+            <div class="ti-footer"><div class="ti-count">Active sellers: <strong>48</strong></div><button class="edit-btn" onclick="toast('Tier editor for Platinum — full editor coming in v2.','amber')">Edit</button></div>
           </div>
 
           <div class="tier-item tpp">
@@ -404,7 +404,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
               Listing Cap: <strong>100 / 50 active</strong> · Gold Badge: <strong style="color:#818cf8">YES</strong> · Status: <strong style="color:var(--green)">ACTIVE</strong><br/>
               B2B Reels: <strong>10</strong> · SialStudio Shoot: <strong>Not Included</strong>
             </div>
-            <div class="ti-footer"><div class="ti-count">Active sellers: <strong>91</strong></div><button class="edit-btn" onclick="alert('Tier editor: Premium+')">Edit</button></div>
+            <div class="ti-footer"><div class="ti-count">Active sellers: <strong>91</strong></div><button class="edit-btn" onclick="toast('Tier editor for Premium+ — full editor coming in v2.','amber')">Edit</button></div>
           </div>
 
           <div class="tier-item tprem">
@@ -413,7 +413,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
               Listing Cap: <strong>40 / 20 active</strong> · Gold Badge: <strong style="color:var(--dim2)">NO</strong> · Status: <strong style="color:var(--green)">ACTIVE</strong><br/>
               B2B Reels: <strong>5</strong> · Front Page Spotlight: <strong>No</strong>
             </div>
-            <div class="ti-footer"><div class="ti-count">Active sellers: <strong>119</strong></div><button class="edit-btn" onclick="alert('Tier editor: Premium')">Edit</button></div>
+            <div class="ti-footer"><div class="ti-count">Active sellers: <strong>119</strong></div><button class="edit-btn" onclick="toast('Tier editor for Premium — full editor coming in v2.','amber')">Edit</button></div>
           </div>
 
           <div class="tier-item tbasic">
@@ -422,7 +422,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
               Listing Cap: <strong>100 / 50 active</strong> · Gold Badge: <strong style="color:var(--dim2)">NO</strong> · Status: <strong style="color:var(--green)">ACTIVE</strong><br/>
               B2B Reels: <strong>None</strong> · Spotlight: <strong>No</strong>
             </div>
-            <div class="ti-footer"><div class="ti-count">Active sellers: <strong>54</strong></div><button class="edit-btn" onclick="alert('Tier editor: Basic/Silver')">Edit</button></div>
+            <div class="ti-footer"><div class="ti-count">Active sellers: <strong>54</strong></div><button class="edit-btn" onclick="toast('Tier editor for Silver/Basic — full editor coming in v2.','amber')">Edit</button></div>
           </div>
 
         </div>
@@ -443,7 +443,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
               <div class="studio-time">Requested 2 hours ago</div>
             </div>
             <span class="priority-tag pt-high">PRIORITY</span>
-            <button class="sched-btn" onclick="alert('Schedule shoot for FitForce Uniforms.\nAssign to media team and confirm date.')">Schedule Shoot</button>
+            <button class="sched-btn" onclick="toast('Shoot scheduled — FitForce Uniforms. Media team notified.','green')">Schedule Shoot</button>
           </div>
           <div class="studio-row">
             <div class="studio-icon">🔬</div>
@@ -453,7 +453,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
               <div class="studio-time">Requested yesterday</div>
             </div>
             <span class="priority-tag pt-std">STANDARD</span>
-            <button class="sched-btn" onclick="alert('Schedule shoot for Apex Surgical Co.')">Schedule Shoot</button>
+            <button class="sched-btn" onclick="toast('Shoot scheduled — Apex Surgical Co. Media team notified.','green')">Schedule Shoot</button>
           </div>
           <div class="studio-row">
             <div class="studio-icon">⚽</div>
@@ -463,7 +463,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
               <div class="studio-time">Requested 2 days ago</div>
             </div>
             <span class="priority-tag pt-std">STANDARD</span>
-            <button class="sched-btn" onclick="alert('Schedule shoot for Star Sports International.')">Schedule Shoot</button>
+            <button class="sched-btn" onclick="toast('Shoot scheduled — Star Sports International. Media team notified.','green')">Schedule Shoot</button>
           </div>
         </div>
       </div>
@@ -544,8 +544,9 @@ function rejectRow(id,name){
 }
 function toast(msg,color){
   const t=document.createElement('div');
-  t.style.cssText=`position:fixed;bottom:24px;right:24px;z-index:1000;background:${color==='green'?'#14532d':'#7f1d1d'};border:1px solid ${color==='green'?'#22c55e':'#ef4444'};border-radius:9px;padding:13px 18px;color:#fff;font-size:13px;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.5)`;
-  t.textContent=(color==='green'?'✓ ':'✗ ')+msg;
+  const clr={green:['#14532d','#22c55e','✓'],red:['#7f1d1d','#ef4444','✗'],amber:['#451a03','#f59e0b','ℹ']};const c=clr[color]||clr.green;
+  t.style.cssText=`position:fixed;bottom:24px;right:24px;z-index:1000;background:${c[0]};border:1px solid ${c[1]};border-radius:9px;padding:13px 18px;color:#fff;font-size:13px;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.5)`;
+  t.textContent=c[2]+' '+msg;
   document.body.appendChild(t);
   setTimeout(()=>t.remove(),3500);
 }

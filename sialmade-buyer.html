@@ -331,8 +331,8 @@ footer{border-top:1px solid var(--border);padding:40px 48px}
     </div>
 
     <div class="hero-ctas">
-      <button class="btn-primary" onclick="openChat('Supplier')">Browse Verified Suppliers →</button>
-      <button class="btn-ghost">▶ Watch Factory Reels</button>
+      <button class="btn-primary" onclick="document.querySelector('.platinum-section').scrollIntoView({behavior:'smooth'})">Browse Verified Suppliers →</button>
+      <button class="btn-ghost" onclick="document.getElementById('reels').scrollIntoView({behavior:'smooth'})">▶ Watch Factory Reels</button>
     </div>
 
     <div class="hero-stats">
@@ -430,7 +430,12 @@ footer{border-top:1px solid var(--border);padding:40px 48px}
 
 <!-- CORE CATEGORY HUB & MICRO-MOQ FILTER -->
 <div class="moq-bar">
-  <span class="moq-text"><strong>Core Category Hub & Micro-MOQ Filter</strong> — Premium blocks for Sialkot's main industries</span>
+  <span class="moq-text"><strong>Filter:</strong></span>
+  <div class="fchip on">All Categories</div>
+  <div class="fchip">Surgical</div>
+  <div class="fchip">Sports Goods</div>
+  <div class="fchip">Uniforms</div>
+  <div class="fchip">Leather</div>
   <div class="toggle-pill" style="margin-left:auto">
     <label class="tog"><input type="checkbox" id="moqT"/><span class="tog-sl"></span></label>
     <span class="tog-label">Show Low-MOQ / Dropship Friendly Supplies</span>
