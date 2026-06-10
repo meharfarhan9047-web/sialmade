@@ -475,7 +475,7 @@ footer{border-top:1px solid var(--border);padding:40px 48px}
       <h2>✦ Recommended Platinum Suppliers</h2>
       <p>Hand-audited factories with proven US export records, English-speaking managers, and guaranteed response times.</p>
     </div>
-    <button class="btn-ghost" style="align-self:flex-start;white-space:nowrap">View All Platinum →</button>
+    <button class="btn-ghost" style="align-self:flex-start;white-space:nowrap" onclick="bToast('Showing all 312 Platinum verified suppliers')">View All Platinum →</button>
   </div>
 
   <div class="sup-grid">
@@ -662,6 +662,13 @@ document.getElementById('chatInp').addEventListener('keydown',e=>{if(e.key==='En
 document.getElementById('chatModal').addEventListener('click',e=>{if(e.target===document.getElementById('chatModal'))document.getElementById('chatModal').classList.remove('open')});
 document.getElementById('moqT').addEventListener('change',function(){this.nextElementSibling.style.background=this.checked?'var(--gold)':'var(--border2)'});
 document.querySelectorAll('.fchip').forEach(c=>c.addEventListener('click',function(){document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));this.classList.add('on')}));
+function bToast(msg,col){const t=document.createElement('div');const clr={green:['#14532d','#22c55e','✓'],red:['#7f1d1d','#ef4444','✗'],amber:['#451a03','#f59e0b','ℹ']};const c=clr[col||'green'];t.style.cssText=`position:fixed;bottom:24px;right:24px;z-index:300;background:${c[0]};border:1px solid ${c[1]};border-radius:9px;padding:13px 18px;color:#fff;font-size:13px;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.5)`;t.textContent=c[2]+' '+msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000)}
+document.querySelector('.s-btn').addEventListener('click',function(){const q=document.querySelector('.search-wrap input').value.trim();bToast(q?'Showing factories for: "'+q+'"':'Browsing all 2,000+ verified suppliers');document.querySelector('.platinum-section').scrollIntoView({behavior:'smooth'})});
+document.querySelector('.search-wrap input').addEventListener('keydown',e=>{if(e.key==='Enter')document.querySelector('.s-btn').click()});
+document.querySelector('.see-all').addEventListener('click',()=>document.getElementById('reels').scrollIntoView({behavior:'smooth'}));
+document.querySelectorAll('.cat-card').forEach(c=>c.addEventListener('click',function(){document.querySelector('.platinum-section').scrollIntoView({behavior:'smooth'})}));
+document.querySelector('[title="Inquiry Basket"]').addEventListener('click',e=>{e.preventDefault();bToast('Inquiry basket is empty — message suppliers to start','amber')});
+document.querySelectorAll('.footer-col a[href="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector('.platinum-section').scrollIntoView({behavior:'smooth'})}));
 </script>
 </body>
 </html>

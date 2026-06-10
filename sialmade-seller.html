@@ -181,14 +181,14 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
   <nav class="sidebar-nav">
     <span class="nav-sec">Main</span>
     <a href="#" class="nav-item active"><span class="n-icon">⊞</span><span>Dashboard Home</span></a>
-    <a href="#" class="nav-item"><span class="n-icon">📦</span><span>My Listings</span><span class="n-badge g">12</span></a>
+    <a href="#" class="nav-item" onclick="event.preventDefault();toast('12 active listings — full listing manager coming soon','green')"><span class="n-icon">📦</span><span>My Listings</span><span class="n-badge g">12</span></a>
     <a href="#" class="nav-item" id="openUploadNav"><span class="n-icon">🎬</span><span>B2B Reels Uploader</span></a>
     <a href="#" class="nav-item" id="openChatNav"><span class="n-icon">💬</span><span>Inquiry Messenger</span><span class="n-badge">3</span></a>
     <span class="nav-sec" style="margin-top:6px">Services</span>
     <a href="#" class="nav-item" id="studioBtn"><span class="n-icon">📷</span><span>SialStudio Request</span></a>
     <a href="sialmade-admin.html" class="nav-item"><span class="n-icon">🛡</span><span>Admin Panel</span></a>
     <a href="sialmade-buyer.html" class="nav-item"><span class="n-icon">🌐</span><span>Buyer Hub</span></a>
-    <a href="#" class="nav-item"><span class="n-icon">⚙</span><span>Account Settings</span></a>
+    <a href="#" class="nav-item" onclick="event.preventDefault();toast('Account Settings — coming in next update','amber')"><span class="n-icon">⚙</span><span>Account Settings</span></a>
   </nav>
   <div class="sidebar-prof">
     <div class="s-avatar">AK</div>
@@ -214,7 +214,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
     </div>
 
     <div class="tb-right">
-      <div class="tb-bell"><span>🔔</span><div class="tb-bell-badge">3</div></div>
+      <div class="tb-bell" onclick="toast('3 new buyer messages — James Schmidt, Maria Garcia, Satit Genniey','amber')"><span>🔔</span><div class="tb-bell-badge">3</div></div>
       <div class="tb-av">AK</div>
     </div>
   </div>

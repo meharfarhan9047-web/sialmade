@@ -220,12 +220,12 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
   <nav class="sidebar-nav">
     <span class="nav-sec">Control</span>
     <a href="#" class="nav-item active"><span class="n-icon">⊞</span><span>Overview Dashboard</span></a>
-    <a href="#" class="nav-item"><span class="n-icon">✅</span><span>Vendor Approvals</span><span class="n-badge">7</span></a>
-    <a href="#" class="nav-item"><span class="n-icon">📦</span><span>Listing Controls</span></a>
-    <a href="#" class="nav-item"><span class="n-icon">👥</span><span>User Management</span></a>
+    <a href="#" class="nav-item" onclick="event.preventDefault();document.getElementById('approvalSection').scrollIntoView({behavior:'smooth'})"><span class="n-icon">✅</span><span>Vendor Approvals</span><span class="n-badge">7</span></a>
+    <a href="#" class="nav-item" onclick="event.preventDefault();toast('Listing Controls — 3,500+ live reels being moderated','amber')"><span class="n-icon">📦</span><span>Listing Controls</span></a>
+    <a href="#" class="nav-item" onclick="event.preventDefault();toast('User Management — 1,395 registered accounts','amber')"><span class="n-icon">👥</span><span>User Management</span></a>
     <span class="nav-sec" style="margin-top:6px">Operations</span>
-    <a href="#" class="nav-item"><span class="n-icon">📷</span><span>SialStudio Requests</span><span class="n-badge a">3</span></a>
-    <a href="#" class="nav-item"><span class="n-icon">🎬</span><span>Reels Moderation</span></a>
+    <a href="#" class="nav-item" onclick="event.preventDefault();document.getElementById('studioSection').scrollIntoView({behavior:'smooth'})"><span class="n-icon">📷</span><span>SialStudio Requests</span><span class="n-badge a">3</span></a>
+    <a href="#" class="nav-item" onclick="event.preventDefault();toast('Reels Moderation — 3,500+ videos, 12 flagged for review','amber')"><span class="n-icon">🎬</span><span>Reels Moderation</span></a>
     <a href="sialmade-buyer.html" class="nav-item"><span class="n-icon">🌐</span><span>Buyer Hub</span></a>
     <a href="sialmade-seller.html" class="nav-item"><span class="n-icon">🏭</span><span>Seller Portal</span></a>
   </nav>
@@ -246,7 +246,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
       <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green);background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);border-radius:6px;padding:6px 11px">
         <div class="status-dot"></div> Platform Online
       </div>
-      <div class="tb-bell"><span>🔔</span><div class="tb-bell-badge">3</div></div>
+      <div class="tb-bell" onclick="toast('7 vendor approvals pending · 3 SialStudio requests waiting','amber')"><span>🔔</span><div class="tb-bell-badge">3</div></div>
       <div class="tb-profile">
         <div class="tb-pav">U</div>
         <div><div class="tb-pname">SialMade</div><div class="tb-prole">Admin</div></div>
@@ -284,7 +284,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
     </div>
 
     <!-- SECTION 2: APPROVAL QUEUE -->
-    <div class="sec-title">Section 2: Vendor Sign-Up &amp; Approval Queue</div>
+    <div class="sec-title" id="approvalSection">Section 2: Vendor Sign-Up &amp; Approval Queue</div>
     <div class="panel">
       <div class="panel-hdr">
         <div class="ph-title">Vendor Sign-Up &amp; Approval Queue</div>
@@ -429,7 +429,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
       </div>
 
       <!-- SIALSTUDIO REQUESTS -->
-      <div class="panel">
+      <div class="panel" id="studioSection">
         <div class="panel-hdr">
           <div class="ph-title">SialStudio Shoot Requests</div>
           <span class="ph-pill amber">3 Pending</span>
