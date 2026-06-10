@@ -189,6 +189,30 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
 .mb-reject-btn{flex:1;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:7px;padding:11px;color:var(--red);font-size:12.5px;font-weight:700;cursor:pointer}
 .mb-approve-btn{flex:2;background:var(--green);border:none;border-radius:7px;padding:11px;color:#000;font-size:12.5px;font-weight:700;cursor:pointer}
 
+/* ── FEATURED SELLER MANAGER ── */
+.featured-list{padding:0}
+.feat-row{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--border);transition:background .15s}
+.feat-row:hover{background:rgba(255,255,255,.02)}
+.feat-row:last-child{border-bottom:none}
+.feat-num{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#000;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feat-icon{width:34px;height:34px;background:var(--card2);border:1px solid var(--border2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.feat-info{flex:1;min-width:0}
+.feat-name{font-size:12.5px;font-weight:700}
+.feat-cat{font-size:10.5px;color:var(--dim2);margin-top:1px}
+.paid-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);color:var(--gold);white-space:nowrap;flex-shrink:0}
+.free-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;background:rgba(80,80,80,.1);border:1px solid rgba(80,80,80,.2);color:var(--dim2);white-space:nowrap;flex-shrink:0}
+.feat-arrows{display:flex;flex-direction:column;gap:2px;flex-shrink:0}
+.arr-btn{background:var(--card2);border:1px solid var(--border2);border-radius:3px;width:20px;height:18px;color:var(--dim2);font-size:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .15s,border-color .15s}
+.arr-btn:hover{color:var(--white);border-color:var(--gold)}
+.feat-tog{position:relative;display:inline-block;width:36px;height:19px;flex-shrink:0}
+.feat-tog input{opacity:0;width:0;height:0;position:absolute}
+.feat-tog-sl{position:absolute;inset:0;background:var(--border2);border-radius:19px;cursor:pointer;transition:background .2s}
+.feat-tog-sl::before{content:'';position:absolute;top:2.5px;left:2.5px;width:14px;height:14px;background:#fff;border-radius:50%;transition:transform .2s}
+.feat-tog input:checked~.feat-tog-sl{background:var(--green)}
+.feat-tog input:checked~.feat-tog-sl::before{transform:translateX(17px)}
+.feat-row.feat-hidden{opacity:.4}
+.btn-publish{width:100%;background:var(--gold);border:none;border-radius:7px;padding:12px;color:#000;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-publish:hover{background:var(--gold2)}
 @media(max-width:1300px){.bottom-grid{grid-template-columns:1fr}}
 @media(max-width:1100px){.metrics-grid{grid-template-columns:repeat(2,1fr)}.tbl-hdr,.tbl-row{grid-template-columns:2fr 1fr 150px}}
 @media(max-width:800px){.sidebar{width:56px}.main{margin-left:56px}.content{padding:16px}}
@@ -226,6 +250,7 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
     <span class="nav-sec" style="margin-top:6px">Operations</span>
     <a href="#" class="nav-item" onclick="event.preventDefault();document.getElementById('studioSection').scrollIntoView({behavior:'smooth'})"><span class="n-icon">📷</span><span>SialStudio Requests</span><span class="n-badge a">3</span></a>
     <a href="#" class="nav-item" onclick="event.preventDefault();toast('Reels Moderation — 3,500+ videos, 12 flagged for review','amber')"><span class="n-icon">🎬</span><span>Reels Moderation</span></a>
+    <a href="#" class="nav-item" onclick="event.preventDefault();document.getElementById('featuredSection').scrollIntoView({behavior:'smooth'})"><span class="n-icon">⭐</span><span>Featured Sellers</span></a>
     <a href="sialmade-buyer.html" class="nav-item"><span class="n-icon">🌐</span><span>Buyer Hub</span></a>
     <a href="sialmade-seller.html" class="nav-item"><span class="n-icon">🏭</span><span>Seller Portal</span></a>
   </nav>
@@ -469,6 +494,82 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
       </div>
 
     </div>
+
+    <!-- SECTION 4: FEATURED SELLER SLOTS -->
+    <div class="sec-title" id="featuredSection" style="margin-top:24px">Section 4: Featured Seller Slots — Buyer Hub</div>
+    <div class="panel">
+      <div class="panel-hdr">
+        <div class="ph-title">Featured Seller Slots Manager <small>Controls buyer hub grid · paid sellers go top</small></div>
+        <span class="ph-pill" style="background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)">6 Slots Live</span>
+      </div>
+      <div class="featured-list" id="featuredList">
+
+        <div class="feat-row" data-id="apex-surgical">
+          <div class="feat-num feat-pos">1</div>
+          <div class="feat-icon">🔬</div>
+          <div class="feat-info"><div class="feat-name">Apex Surgical Co.</div><div class="feat-cat">Surgical · FDA Compliant · ISO 13485</div></div>
+          <span class="tier-badge t-plat">★ Platinum</span>
+          <span class="paid-tag">💰 Paid Slot</span>
+          <div class="feat-arrows"><button class="arr-btn" onclick="moveRow(this,-1)">▲</button><button class="arr-btn" onclick="moveRow(this,1)">▼</button></div>
+          <label class="feat-tog"><input type="checkbox" checked onchange="toggleRow(this)"/><span class="feat-tog-sl"></span></label>
+        </div>
+
+        <div class="feat-row" data-id="star-sports">
+          <div class="feat-num feat-pos">2</div>
+          <div class="feat-icon">⚽</div>
+          <div class="feat-info"><div class="feat-name">Star Sports International</div><div class="feat-cat">Sports Goods · FIFA Approved</div></div>
+          <span class="tier-badge t-plat">★ Platinum</span>
+          <span class="paid-tag">💰 Paid Slot</span>
+          <div class="feat-arrows"><button class="arr-btn" onclick="moveRow(this,-1)">▲</button><button class="arr-btn" onclick="moveRow(this,1)">▼</button></div>
+          <label class="feat-tog"><input type="checkbox" checked onchange="toggleRow(this)"/><span class="feat-tog-sl"></span></label>
+        </div>
+
+        <div class="feat-row" data-id="uniwear">
+          <div class="feat-num feat-pos">3</div>
+          <div class="feat-icon">🧥</div>
+          <div class="feat-info"><div class="feat-name">UniWear Garment Factory</div><div class="feat-cat">Sportswear · Custom Branding · MOQ 20</div></div>
+          <span class="tier-badge t-premplus">◆ Premium+</span>
+          <span class="paid-tag">💰 Paid Slot</span>
+          <div class="feat-arrows"><button class="arr-btn" onclick="moveRow(this,-1)">▲</button><button class="arr-btn" onclick="moveRow(this,1)">▼</button></div>
+          <label class="feat-tog"><input type="checkbox" checked onchange="toggleRow(this)"/><span class="feat-tog-sl"></span></label>
+        </div>
+
+        <div class="feat-row" data-id="medcraft">
+          <div class="feat-num feat-pos">4</div>
+          <div class="feat-icon">🦷</div>
+          <div class="feat-info"><div class="feat-name">MedCraft Instruments</div><div class="feat-cat">Dental Tools · ISO 13485 · CE Marked</div></div>
+          <span class="tier-badge t-prem">◇ Premium</span>
+          <span class="free-tag">Free Slot</span>
+          <div class="feat-arrows"><button class="arr-btn" onclick="moveRow(this,-1)">▲</button><button class="arr-btn" onclick="moveRow(this,1)">▼</button></div>
+          <label class="feat-tog"><input type="checkbox" checked onchange="toggleRow(this)"/><span class="feat-tog-sl"></span></label>
+        </div>
+
+        <div class="feat-row" data-id="power-boxing">
+          <div class="feat-num feat-pos">5</div>
+          <div class="feat-icon">🥊</div>
+          <div class="feat-info"><div class="feat-name">Power Boxing Co.</div><div class="feat-cat">Boxing Gear · Custom OEM · Low MOQ</div></div>
+          <span class="tier-badge t-prem">◇ Premium</span>
+          <span class="free-tag">Free Slot</span>
+          <div class="feat-arrows"><button class="arr-btn" onclick="moveRow(this,-1)">▲</button><button class="arr-btn" onclick="moveRow(this,1)">▼</button></div>
+          <label class="feat-tog"><input type="checkbox" checked onchange="toggleRow(this)"/><span class="feat-tog-sl"></span></label>
+        </div>
+
+        <div class="feat-row" data-id="elite-sports">
+          <div class="feat-num feat-pos">6</div>
+          <div class="feat-icon">⚽</div>
+          <div class="feat-info"><div class="feat-name">Elite Sports Exports</div><div class="feat-cat">Sports · FIFA Approved · ISO 9001</div></div>
+          <span class="tier-badge t-basic">Silver</span>
+          <span class="free-tag">Free Slot</span>
+          <div class="feat-arrows"><button class="arr-btn" onclick="moveRow(this,-1)">▲</button><button class="arr-btn" onclick="moveRow(this,1)">▼</button></div>
+          <label class="feat-tog"><input type="checkbox" checked onchange="toggleRow(this)"/><span class="feat-tog-sl"></span></label>
+        </div>
+
+      </div>
+      <div style="padding:14px 18px;border-top:1px solid var(--border)">
+        <button class="btn-publish" onclick="saveFeatured()">💾 Save & Publish to Buyer Hub</button>
+      </div>
+    </div>
+
   </div>
 </main>
 
@@ -551,6 +652,49 @@ function toast(msg,color){
   setTimeout(()=>t.remove(),3500);
 }
 document.getElementById('reviewModal').addEventListener('click',e=>{if(e.target===document.getElementById('reviewModal'))document.getElementById('reviewModal').classList.remove('open')});
+
+// Featured Seller Manager
+function moveRow(btn,dir){
+  const row=btn.closest('.feat-row');
+  const list=document.getElementById('featuredList');
+  const rows=[...list.querySelectorAll('.feat-row')];
+  const idx=rows.indexOf(row);
+  const newIdx=idx+dir;
+  if(newIdx<0||newIdx>=rows.length)return;
+  if(dir===-1)list.insertBefore(row,rows[newIdx]);
+  else list.insertBefore(rows[newIdx],row);
+  updatePositions();
+}
+function updatePositions(){
+  document.querySelectorAll('#featuredList .feat-row').forEach((r,i)=>{
+    r.querySelector('.feat-pos').textContent=i+1;
+  });
+}
+function toggleRow(cb){
+  cb.closest('.feat-row').classList.toggle('feat-hidden',!cb.checked);
+}
+function saveFeatured(){
+  const rows=document.querySelectorAll('#featuredList .feat-row');
+  const data=[...rows].map(r=>({id:r.dataset.id,visible:r.querySelector('input[type=checkbox]').checked}));
+  localStorage.setItem('sm_featured',JSON.stringify(data));
+  toast('Featured sellers saved — buyer hub updated instantly!','green');
+}
+// Load saved featured state on admin open
+(function(){
+  const saved=localStorage.getItem('sm_featured');
+  if(!saved)return;
+  const data=JSON.parse(saved);
+  const list=document.getElementById('featuredList');
+  data.forEach(item=>{
+    const row=list.querySelector(`[data-id="${item.id}"]`);
+    if(!row)return;
+    list.appendChild(row);
+    const cb=row.querySelector('input[type=checkbox]');
+    cb.checked=item.visible;
+    row.classList.toggle('feat-hidden',!item.visible);
+  });
+  updatePositions();
+})();
 </script>
 </body>
 </html>

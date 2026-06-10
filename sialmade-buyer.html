@@ -8,9 +8,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --black:#000;--dark:#0a0a0a;--card:#111;--card2:#181818;
-  --border:#1e1e1e;--border2:#2c2c2c;
+  --border:#1e1e1e;--border2:#2a2a2a;
   --gold:#c9a84c;--gold2:#e8c96d;
-  --silver:#a8b8c8;--white:#f0f0f0;--dim:#666;--dim2:#888;
+  --silver:#a8b8c8;--white:#f0f0f0;--dim:#555;--dim2:#888;
   --green:#22c55e;
 }
 html{scroll-behavior:smooth}
@@ -19,231 +19,171 @@ body{background:var(--black);color:var(--white);font-family:'Arial','Helvetica N
 /* ── HEADER ── */
 header{
   position:sticky;top:0;z-index:100;
-  background:rgba(0,0,0,0.96);backdrop-filter:blur(14px);
+  background:rgba(0,0,0,.96);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--border);
-  height:62px;display:flex;align-items:center;padding:0 28px;gap:20px;
+  height:62px;display:flex;align-items:center;padding:0 28px;gap:16px;
 }
-.logo{font-size:22px;font-weight:900;letter-spacing:-0.5px;color:var(--white);white-space:nowrap;text-decoration:none}
+.logo{font-size:22px;font-weight:900;letter-spacing:-.5px;color:var(--white);text-decoration:none;flex-shrink:0}
 .logo span{color:var(--gold)}
-
-.search-wrap{flex:1;max-width:580px;position:relative}
-.search-wrap input{
-  width:100%;background:var(--card);border:1px solid var(--border2);
-  border-radius:8px;padding:9px 44px 9px 38px;
-  color:var(--white);font-size:13px;outline:none;transition:border-color .2s
-}
+.search-wrap{flex:1;max-width:640px;margin:0 auto;position:relative}
+.search-wrap input{width:100%;background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:10px 46px 10px 40px;color:var(--white);font-size:13px;outline:none;transition:border-color .2s}
 .search-wrap input::placeholder{color:var(--dim2)}
 .search-wrap input:focus{border-color:var(--gold)}
-.s-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--dim2);font-size:14px;pointer-events:none}
-.s-btn{position:absolute;right:5px;top:50%;transform:translateY(-50%);background:var(--gold);border:none;border-radius:5px;padding:5px 12px;color:#000;font-size:11.5px;font-weight:700;cursor:pointer}
-
-.header-icons{display:flex;align-items:center;gap:6px;margin-left:auto}
-.h-icon-btn{
-  width:38px;height:38px;background:var(--card);border:1px solid var(--border2);
-  border-radius:8px;display:flex;align-items:center;justify-content:center;
-  font-size:17px;cursor:pointer;text-decoration:none;transition:border-color .2s;position:relative
-}
+.s-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--dim2);font-size:15px;pointer-events:none}
+.s-btn{position:absolute;right:5px;top:50%;transform:translateY(-50%);background:var(--gold);border:none;border-radius:5px;padding:5px 14px;color:#000;font-size:11.5px;font-weight:700;cursor:pointer}
+.header-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.h-icon-btn{width:38px;height:38px;background:var(--card);border:1px solid var(--border2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;text-decoration:none;transition:border-color .2s;position:relative}
 .h-icon-btn:hover{border-color:var(--gold)}
-.h-icon-btn .dot{position:absolute;top:6px;right:6px;width:6px;height:6px;background:var(--gold);border-radius:50%;box-shadow:0 0 5px var(--gold);animation:pulse 2s infinite}
-.h-divider{width:1px;height:24px;background:var(--border2);margin:0 4px}
-.btn-login{background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:8px 14px;color:var(--white);font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;white-space:nowrap;transition:border-color .2s}
+.h-dot{position:absolute;top:6px;right:6px;width:6px;height:6px;background:var(--gold);border-radius:50%;box-shadow:0 0 5px var(--gold);animation:pulse 2s infinite}
+.h-divider{width:1px;height:24px;background:var(--border2)}
+.btn-login{background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:8px 14px;color:var(--white);font-size:12.5px;font-weight:500;cursor:pointer;text-decoration:none;white-space:nowrap;transition:border-color .2s}
 .btn-login:hover{border-color:var(--gold)}
-.btn-reg{background:var(--gold);border:1px solid var(--gold);border-radius:8px;padding:8px 16px;color:#000;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .2s}
+.btn-reg{background:var(--gold);border:none;border-radius:8px;padding:8px 16px;color:#000;font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .2s}
 .btn-reg:hover{background:var(--gold2)}
-
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* ── HERO ── */
-.hero{
-  display:grid;grid-template-columns:1fr 1fr;
-  min-height:88vh;align-items:center;
-  padding:64px 48px;gap:48px;
-  position:relative;overflow:hidden
-}
-.hero::after{content:'';position:absolute;top:-300px;right:-300px;width:800px;height:800px;background:radial-gradient(circle,rgba(201,168,76,.05) 0%,transparent 65%);pointer-events:none}
+/* ── MAIN 2-COLUMN ── */
+.main-wrap{display:grid;grid-template-columns:55% 45%;min-height:calc(100vh - 62px);align-items:start}
 
-.hero-left{z-index:1}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.28);border-radius:20px;padding:5px 13px;font-size:11.5px;font-weight:600;color:var(--gold);letter-spacing:.5px;text-transform:uppercase;margin-bottom:22px}
-.hero-title{font-size:clamp(32px,3.8vw,54px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin-bottom:16px}
+/* ── LEFT COLUMN ── */
+.left-col{padding:36px 40px 52px;border-right:1px solid var(--border)}
+
+/* Hero */
+.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.28);border-radius:20px;padding:5px 13px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.5px;text-transform:uppercase;margin-bottom:18px}
+.hero-title{font-size:clamp(28px,3vw,46px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin-bottom:14px}
 .hero-title em{font-style:normal;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{color:var(--dim2);font-size:15px;max-width:440px;line-height:1.75;margin-bottom:28px}
-
-.hero-trust-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:28px}
-.htr{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--dim2)}
-.htr strong{color:var(--white)}
-
-.hero-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
-.btn-primary{background:var(--gold);color:#000;border:none;border-radius:8px;padding:13px 26px;font-size:13.5px;font-weight:700;cursor:pointer;transition:background .2s,transform .15s}
-.btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
-.btn-ghost{background:transparent;color:var(--white);border:1px solid var(--border2);border-radius:8px;padding:13px 26px;font-size:13.5px;font-weight:600;cursor:pointer;transition:border-color .2s,color .2s}
+.hero-sub{color:var(--dim2);font-size:14px;max-width:460px;line-height:1.75;margin-bottom:18px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.ht{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--dim2)}
+.ht strong{color:var(--white)}
+.hero-ctas{display:flex;gap:10px;margin-bottom:8px}
+.btn-primary{background:var(--gold);color:#000;border:none;border-radius:8px;padding:11px 22px;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-primary:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid var(--border2);border-radius:8px;padding:11px 22px;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .2s,color .2s}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 
-.hero-stats{display:flex;gap:28px;padding-top:24px;border-top:1px solid var(--border)}
-.stat-num{font-size:26px;font-weight:900;letter-spacing:-1px}
-.stat-num span{color:var(--gold)}
-.stat-label{font-size:11px;color:var(--dim2);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
-
-/* Hero right — 3 image tiles */
-.hero-right{z-index:1;display:flex;flex-direction:column;gap:0}
-.hero-img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border-radius:16px;overflow:hidden}
-.hero-tile{
-  position:relative;aspect-ratio:3/4;overflow:hidden;
-  border-radius:12px;cursor:pointer;
-  transition:transform .25s
-}
-.hero-tile:hover{transform:scale(1.02)}
-.tile-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px}
-.tile-1{background:linear-gradient(160deg,#0d1a0d,#1a2a10,#0d0d0d)}
-.tile-2{background:linear-gradient(160deg,#1a1000,#2a1a00,#0d0d0d)}
-.tile-3{background:linear-gradient(160deg,#001020,#001830,#0d0d0d)}
-.tile-label{position:absolute;bottom:0;left:0;right:0;padding:36px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-size:12px;font-weight:700;line-height:1.3;color:var(--white)}
-
-/* ── SECTION WRAPPER ── */
-.section-wrap{padding:52px 48px}
-.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:24px}
-.section-hdr h2{font-size:20px;font-weight:800;letter-spacing:-.3px}
-.section-hdr .snew{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:9.5px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:4px;text-transform:uppercase}
-.section-hdr .see-all{margin-left:auto;font-size:12.5px;color:var(--dim2);cursor:pointer;transition:color .2s}
-.section-hdr .see-all:hover{color:var(--gold)}
+/* Section header */
+.sec-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-top:32px;margin-bottom:14px}
+.sec-hdr h2{font-size:17px;font-weight:800;letter-spacing:-.3px}
+.new-tag{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:4px;text-transform:uppercase;margin-left:8px;vertical-align:middle}
+.see-all{font-size:12px;color:var(--dim2);cursor:pointer;transition:color .2s;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.see-all:hover{color:var(--gold)}
+.sec-sub{font-size:11.5px;color:var(--dim2);margin-top:3px}
 
 /* ── REELS ROW ── */
-.reels-section{padding:52px 48px;border-top:1px solid var(--border)}
-.reels-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.reels-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
+.reels-row::-webkit-scrollbar{height:3px}
+.reels-row::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
 
-.reel-card{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid var(--border2);transition:border-color .25s,transform .25s}
-.reel-card:hover{border-color:var(--gold);transform:translateY(-4px)}
-.reel-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:44px}
-.rb1{background:linear-gradient(155deg,#1a1000,#251800,#0d0d0d)}
-.rb2{background:linear-gradient(155deg,#001a18,#002220,#0d0d0d)}
-.rb3{background:linear-gradient(155deg,#0d0018,#160024,#0d0d0d)}
-.rb4{background:linear-gradient(155deg,#001808,#001f0a,#0d0d0d)}
-.rb5{background:linear-gradient(155deg,#1a0000,#220000,#0d0d0d)}
-.reel-grad{position:absolute;bottom:0;left:0;right:0;padding:44px 10px 10px;background:linear-gradient(transparent,rgba(0,0,0,.95))}
-.reel-title{font-size:11px;font-weight:700;color:var(--white);line-height:1.3;margin-bottom:3px}
-.reel-resp{font-size:9.5px;color:var(--green);margin-bottom:6px}
-.reel-bottom{display:flex;align-items:center;justify-content:space-between}
-.reel-views{font-size:10px;color:var(--dim2)}
-.reel-cta-btn{background:var(--gold);color:#000;border:none;border-radius:5px;padding:4px 9px;font-size:9.5px;font-weight:700;cursor:pointer;white-space:nowrap}
-.reel-live{position:absolute;top:9px;left:9px;background:#dc2626;color:#fff;font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:.5px;text-transform:uppercase}
-.reel-cert{position:absolute;top:9px;right:9px;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.4);color:var(--gold);font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:3px}
-.reel-play-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:rgba(0,0,0,.5);border:1.5px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
-.reel-play-overlay::after{content:'';width:0;height:0;border-style:solid;border-width:6px 0 6px 12px;border-color:transparent transparent transparent #fff;margin-left:3px}
-.reel-card:hover .reel-play-overlay{opacity:1}
+.reel-card{flex:0 0 145px;aspect-ratio:9/16;border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid var(--border2);position:relative;transition:border-color .25s,transform .2s;scroll-snap-align:start}
+.reel-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.reel-bg{width:100%;height:100%;position:relative}
+.rb1{background:linear-gradient(175deg,#080f08 0%,#101a0a 40%,#060c05 100%)}
+.rb2{background:linear-gradient(175deg,#0c0c18 0%,#14102a 40%,#070709 100%)}
+.rb3{background:linear-gradient(175deg,#180c00 0%,#241400 40%,#0c0600 100%)}
+.rb4{background:linear-gradient(175deg,#001418 0%,#001e22 40%,#000a0d 100%)}
+.rb5{background:linear-gradient(175deg,#140014 0%,#1e0820 40%,#080008 100%)}
+/* industrial texture overlay */
+.reel-bg::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.01) 3px,rgba(255,255,255,.01) 4px);pointer-events:none}
+.reel-cam-badge{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px;font-size:8.5px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:3px}
+.reel-live-tag{position:absolute;top:8px;right:8px;background:#dc2626;color:#fff;font-size:7.5px;font-weight:700;padding:2px 5px;border-radius:3px;letter-spacing:.4px;text-transform:uppercase}
+.reel-cert-tag{position:absolute;top:8px;right:8px;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.4);color:var(--gold);font-size:7.5px;font-weight:700;padding:2px 5px;border-radius:3px}
+.reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:32px;height:32px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.reel-play::after{content:'';border-style:solid;border-width:5px 0 5px 9px;border-color:transparent transparent transparent rgba(255,255,255,.9);margin-left:2px}
+.reel-card:hover .reel-play{opacity:1}
+/* factory worker silhouette suggestion */
+.reel-silhouette{position:absolute;bottom:68px;left:0;right:0;height:55px;background:linear-gradient(transparent,rgba(0,0,0,.25));pointer-events:none}
+.reel-grad{position:absolute;bottom:0;left:0;right:0;padding:42px 9px 10px;background:linear-gradient(transparent,rgba(0,0,0,.98))}
+.reel-title-t{font-size:10px;font-weight:700;color:var(--white);line-height:1.3;margin-bottom:4px}
+.reel-resp-t{font-size:8.5px;color:var(--green);margin-bottom:7px;font-weight:600}
+.reel-cta-btn{width:100%;background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.35);border-radius:5px;padding:5px 4px;color:var(--gold);font-size:9px;font-weight:700;cursor:pointer;transition:background .2s,color .2s}
+.reel-cta-btn:hover{background:var(--gold);color:#000;border-color:var(--gold)}
 
-/* ── FILTER / MOQ BAR ── */
-.moq-bar{
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  padding:0 48px;margin-bottom:28px;
-}
-.moq-text{font-size:13px;color:var(--dim2)}
-.moq-text strong{color:var(--white)}
-.toggle-pill{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:7px 14px}
-.tog{position:relative;display:inline-block;width:38px;height:20px}
+/* ── CATEGORY CARDS ── */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cat-card{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 15px;cursor:pointer;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
+.cat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .2s}
+.cat-card:hover{border-color:rgba(201,168,76,.4);background:var(--card2)}
+.cat-card:hover::after{opacity:1}
+.cat-check{width:18px;height:18px;border-radius:50%;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--green);margin-bottom:10px}
+.cat-icon{font-size:22px;margin-bottom:8px}
+.cat-name{font-size:12.5px;font-weight:800;line-height:1.3;margin-bottom:7px;letter-spacing:-.2px}
+.cat-count{font-size:10.5px;color:var(--dim2)}
+.cat-count strong{color:var(--gold)}
+
+/* ── RIGHT COLUMN ── */
+.right-col{padding:20px 24px 52px}
+
+/* Factory image tiles */
+.tiles-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+.factory-tile{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .2s}
+.factory-tile:hover{transform:scale(1.02)}
+.ft1{background:linear-gradient(145deg,#071207,#0d1c0a,#050905)}
+.ft2{background:linear-gradient(145deg,#1a0e05,#221505,#0d0803)}
+.ft3{background:linear-gradient(145deg,#060c18,#0a1022,#050709)}
+/* Grid / machine pattern overlay */
+.ft-grid{position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
+.ft-glow{position:absolute;inset:0;pointer-events:none}
+.ft1 .ft-glow{background:radial-gradient(ellipse at 60% 40%,rgba(34,197,94,.06) 0%,transparent 65%)}
+.ft2 .ft-glow{background:radial-gradient(ellipse at 40% 60%,rgba(201,168,76,.08) 0%,transparent 65%)}
+.ft3 .ft-glow{background:radial-gradient(ellipse at 50% 50%,rgba(59,130,246,.07) 0%,transparent 65%)}
+.ft-machinery{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:24px;opacity:.2}
+.ft-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ft-play-btn::after{content:'';border-style:solid;border-width:4px 0 4px 7px;border-color:transparent transparent transparent rgba(255,255,255,.9);margin-left:2px}
+.ft-label{position:absolute;bottom:0;left:0;right:0;padding:22px 10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.96));font-size:9.5px;font-weight:700;line-height:1.3;color:var(--white)}
+
+/* Supplier section header */
+.sup-filter-bar{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:13px;gap:10px;flex-wrap:wrap}
+.sup-filter-title{font-size:13.5px;font-weight:800;letter-spacing:-.2px}
+.sup-filter-sub{font-size:10.5px;color:var(--dim2);margin-top:2px}
+.moq-wrap{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border2);border-radius:7px;padding:5px 9px;flex-shrink:0}
+.tog{position:relative;display:inline-block;width:32px;height:17px}
 .tog input{opacity:0;width:0;height:0;position:absolute}
-.tog-sl{position:absolute;inset:0;background:var(--border2);border-radius:20px;cursor:pointer;transition:background .2s}
-.tog-sl::before{content:'';position:absolute;top:3px;left:3px;width:14px;height:14px;background:#fff;border-radius:50%;transition:transform .2s}
+.tog-sl{position:absolute;inset:0;background:var(--border2);border-radius:17px;cursor:pointer;transition:background .2s}
+.tog-sl::before{content:'';position:absolute;top:2.5px;left:2.5px;width:12px;height:12px;background:#fff;border-radius:50%;transition:transform .2s}
 .tog input:checked~.tog-sl{background:var(--gold)}
-.tog input:checked~.tog-sl::before{transform:translateX(18px)}
-.tog-label{font-size:12.5px;font-weight:600;color:var(--white)}
+.tog input:checked~.tog-sl::before{transform:translateX(15px)}
+.moq-lbl{font-size:10px;font-weight:600;color:var(--white);white-space:nowrap}
 
-.fchip{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--dim2);cursor:pointer;transition:border-color .2s,color .2s;white-space:nowrap}
-.fchip:hover,.fchip.on{border-color:var(--gold);color:var(--gold)}
+/* ── SUPPLIER GRID ── */
+.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sup-card{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:13px;position:relative;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .18s}
+.sup-card:hover{border-color:rgba(201,168,76,.4);transform:translateY(-2px)}
 
-/* ── CATEGORIES ── */
-.cat-section{padding:0 48px 52px}
-.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.cat-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:28px;cursor:pointer;transition:border-color .25s,background .25s,transform .2s;position:relative;overflow:hidden}
-.cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .25s}
-.cat-card:hover{border-color:var(--gold);background:var(--card2);transform:translateY(-2px)}
-.cat-card:hover::before{opacity:1}
-.cat-icon-wrap{font-size:32px;margin-bottom:12px}
-.cat-name{font-size:17px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px}
-.cat-certs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
-.cert-tag{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:var(--green);font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px}
-.cat-desc{font-size:12.5px;color:var(--dim2);line-height:1.65;margin-bottom:16px}
-.cat-footer{display:flex;align-items:center;justify-content:space-between}
-.cat-count{font-size:12px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:5px}
-.cat-count::before{content:'✓';color:var(--green)}
-.cat-arr{color:var(--dim);font-size:16px;transition:color .2s,transform .2s}
-.cat-card:hover .cat-arr{color:var(--gold);transform:translateX(4px)}
+/* Gold circular seal */
+.seal-badge{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;background:conic-gradient(from 0deg,#c9a84c,#e8c96d,#c9a84c,#8a6520,#c9a84c);display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px rgba(201,168,76,.3);padding:3px}
+.seal-in{width:100%;height:100%;border-radius:50%;background:#1a1200;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:5px;font-weight:900;color:var(--gold);text-align:center;text-transform:uppercase;letter-spacing:.2px;line-height:1.3}
+.seal-in .si{font-size:8px;margin-bottom:1px}
 
-/* ── PLATINUM SUPPLIERS ── */
-.platinum-section{
-  padding:52px 48px;border-top:1px solid var(--border);
-  background:linear-gradient(180deg,var(--black) 0%,#08060000 100%)
-}
-.plat-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px}
-.plat-hdr h2{font-size:24px;font-weight:900;letter-spacing:-.5px;margin-bottom:6px}
-.plat-hdr p{color:var(--dim2);font-size:13px;max-width:380px;line-height:1.6}
+/* Verified check */
+.v-check{width:16px;height:16px;border-radius:50%;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--green);margin-bottom:7px}
 
-.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.sup-card{
-  background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:20px;
-  position:relative;overflow:hidden;cursor:pointer;
-  transition:border-color .25s,transform .2s
-}
-.sup-card:hover{border-color:rgba(201,168,76,.45);transform:translateY(-3px)}
+.s-name{font-size:12px;font-weight:800;margin-bottom:3px;padding-right:46px;letter-spacing:-.2px;line-height:1.25}
+.s-meta{font-size:9.5px;color:var(--dim2);margin-bottom:1px;line-height:1.4}
+.s-meta strong{color:var(--silver)}
+.s-resp{font-size:9px;color:var(--green);font-weight:600;margin:5px 0 8px}
+.s-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:10px}
+.s-thumb{aspect-ratio:1;background:var(--card2);border:1px solid var(--border2);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px}
+.s-msg-btn{width:100%;background:transparent;border:1px solid var(--border2);border-radius:6px;padding:7px;color:var(--white);font-size:10.5px;font-weight:700;cursor:pointer;transition:background .2s,border-color .2s,color .2s;text-align:center}
+.s-msg-btn:hover{background:var(--gold);border-color:var(--gold);color:#000}
 
-/* CIRCULAR SEAL BADGE */
-.seal-badge{
-  position:absolute;top:14px;right:14px;
-  width:58px;height:58px;border-radius:50%;
-  background:conic-gradient(from 0deg,#c9a84c 0%,#e8c96d 25%,#c9a84c 50%,#8a6520 75%,#c9a84c 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  box-shadow:0 0 14px rgba(201,168,76,.35);
-  padding:4px;
-}
-.seal-inner{
-  width:100%;height:100%;border-radius:50%;
-  background:#1a1200;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-size:7px;font-weight:900;color:var(--gold);text-align:center;
-  text-transform:uppercase;letter-spacing:.3px;line-height:1.3
-}
-.seal-inner .seal-icon{font-size:12px;margin-bottom:1px}
-
-.sup-name{font-size:16px;font-weight:800;margin-bottom:4px;letter-spacing:-.2px;padding-right:72px}
-.sup-meta{font-size:11.5px;color:var(--dim2);margin-bottom:4px}
-.sup-meta strong{color:var(--silver)}
-.sup-resp{font-size:11px;color:var(--green);font-weight:600;margin-bottom:10px}
-.sup-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
-.stag{background:var(--card2);border:1px solid var(--border2);border-radius:4px;padding:3px 7px;font-size:10.5px;color:var(--silver)}
-.stag.g{background:rgba(34,197,94,.07);border-color:rgba(34,197,94,.2);color:var(--green)}
-
-.sup-products{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px}
-.prod-thumb{aspect-ratio:1;background:var(--card2);border:1px solid var(--border2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:20px}
-
-.ship-row{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.14);border-radius:7px;padding:7px 10px;font-size:11px;color:var(--silver);margin-bottom:12px;display:flex;align-items:center;gap:5px}
-.ship-row strong{color:var(--white)}
-
-.sup-footer{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.sup-flags{font-size:18px;letter-spacing:2px}
-.sup-moq{font-size:11px;color:var(--dim2)}
-.sup-btns{display:flex;gap:6px}
-.sample-btn{flex:1;background:transparent;border:1px solid var(--border2);border-radius:6px;padding:7px 10px;color:var(--white);font-size:11px;font-weight:600;cursor:pointer;transition:border-color .2s,color .2s;white-space:nowrap}
-.sample-btn:hover{border-color:var(--gold);color:var(--gold)}
-.msg-btn{flex:2;background:var(--gold);border:none;border-radius:6px;padding:7px 14px;color:#000;font-size:11.5px;font-weight:700;cursor:pointer;transition:background .2s}
-.msg-btn:hover{background:var(--gold2)}
-
-/* ── TRUST / HOW IT WORKS ── */
-.trust-section{padding:52px 48px;border-top:1px solid var(--border);background:#050505}
+/* ── TRUST SECTION (full width below) ── */
+.trust-section{grid-column:1/-1;padding:52px 48px;border-top:1px solid var(--border);background:#050505}
 .trust-title{text-align:center;margin-bottom:36px}
 .trust-title h2{font-size:22px;font-weight:900;margin-bottom:6px}
 .trust-title p{color:var(--dim2);font-size:13.5px}
-
 .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px}
-.tc{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:22px 18px;text-align:center;transition:border-color .2s,transform .2s}
-.tc:hover{border-color:rgba(201,168,76,.25);transform:translateY(-2px)}
+.tc{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:22px 18px;text-align:center;transition:border-color .2s}
+.tc:hover{border-color:rgba(201,168,76,.25)}
 .tc-icon{font-size:28px;margin-bottom:10px}
 .tc-title{font-size:13.5px;font-weight:800;margin-bottom:5px}
 .tc-desc{font-size:11.5px;color:var(--dim2);line-height:1.6}
-
 .cert-bar{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
 .cb{display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border2);border-radius:7px;padding:9px 14px;font-size:11.5px;font-weight:700;color:var(--white)}
 .cb small{display:block;font-size:10px;color:var(--dim2);font-weight:400;margin-top:1px}
 
 /* ── FOOTER ── */
-footer{border-top:1px solid var(--border);padding:40px 48px}
+footer{border-top:1px solid var(--border);padding:40px 48px;background:#030303}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:28px}
 .footer-logo{font-size:20px;font-weight:900;margin-bottom:10px}
 .footer-logo span{color:var(--gold)}
@@ -278,311 +218,300 @@ footer{border-top:1px solid var(--border);padding:40px 48px}
 .chat-inp{flex:1;background:var(--card2);border:1px solid var(--border2);border-radius:7px;padding:8px 11px;color:var(--white);font-size:12.5px;outline:none}
 .chat-send{background:var(--gold);border:none;border-radius:7px;padding:0 13px;color:#000;font-weight:700;font-size:12.5px;cursor:pointer}
 
-@media(max-width:1200px){.sup-grid{grid-template-columns:repeat(2,1fr)}.trust-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:1000px){.reels-row{grid-template-columns:repeat(4,1fr)}.reels-row .reel-card:last-child{display:none}}
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;padding:36px 24px;min-height:auto}
-  .hero-right{display:none}
-  .reels-section,.cat-section,.platinum-section,.trust-section,.section-wrap,footer{padding-left:24px;padding-right:24px}
-  .moq-bar{padding-left:24px;padding-right:24px}
-  .cat-grid,.sup-grid{grid-template-columns:1fr}
-  .reels-row{grid-template-columns:repeat(2,1fr)}
-  .trust-grid{grid-template-columns:1fr 1fr}
-  .footer-grid{grid-template-columns:1fr}
-}
+/* ── RESPONSIVE ── */
+@media(max-width:1300px){.sup-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1000px){.main-wrap{grid-template-columns:1fr}.left-col{border-right:none;border-bottom:1px solid var(--border)}.trust-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.cat-grid{grid-template-columns:1fr}.tiles-row{grid-template-columns:1fr}.sup-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.trust-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ── HEADER ── -->
 <header>
   <a href="#" class="logo">Sial<span>Made</span></a>
 
   <div class="search-wrap">
     <span class="s-icon">⌕</span>
-    <input type="text" placeholder="Search 2,000+ Verified Sialkot Manufacturers, Custom Sportswear, Surgical Tools..."/>
-    <button class="s-btn">Search</button>
+    <input type="text" id="searchInput" placeholder="Search 2,000+ Verified Sialkot Manufacturers, Custom Sportswear, Surgical Tools..."/>
+    <button class="s-btn" id="searchBtn">Search</button>
   </div>
 
-  <div class="header-icons">
-    <a href="#reels" class="h-icon-btn" title="B2B Reels"><span>🎬</span><div class="dot"></div></a>
+  <div class="header-right">
+    <a href="#reels" class="h-icon-btn" title="B2B Reels"><span>🎬</span><div class="h-dot"></div></a>
     <a href="#" class="h-icon-btn" title="Messages" onclick="openChat('Supplier');return false"><span>💬</span></a>
-    <a href="#" class="h-icon-btn" title="Inquiry Basket"><span>🛒</span></a>
+    <a href="#" class="h-icon-btn" title="Inquiry Basket" id="cartBtn"><span>🛒</span></a>
     <div class="h-divider"></div>
     <a href="sialmade-seller.html" class="btn-login">Login</a>
     <a href="sialmade-seller.html" class="btn-reg">Register →</a>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
+<!-- ── MAIN 2-COLUMN ── -->
+<div class="main-wrap">
+
+  <!-- ══ LEFT COLUMN ══ -->
+  <div class="left-col">
+
+    <!-- HERO TEXT -->
     <div class="hero-eyebrow">🇵🇰 Sialkot's #1 Verified B2B Platform</div>
     <h1 class="hero-title">
       Sialkot's Premium<br/>Manufacturing Sector.<br/><em>Direct to Your Doorstep.</em>
     </h1>
     <p class="hero-sub">Skip the middlemen. Connect directly with verified factories, negotiate via live chat, and source with no boundaries — shipped to the USA in 18–25 days.</p>
 
-    <div class="hero-trust-row">
-      <div class="htr"><span>🛡</span><strong>Trade Protection</strong> guaranteed</div>
-      <div class="htr"><span>🔬</span><strong>FDA / ISO / CE</strong> certified</div>
-      <div class="htr"><span>📦</span><strong>Sample orders</strong> available</div>
-      <div class="htr"><span>🇺🇸</span><strong>US Support</strong> 9AM–6PM EST</div>
-    </div>
 
     <div class="hero-ctas">
-      <button class="btn-primary" onclick="document.querySelector('.platinum-section').scrollIntoView({behavior:'smooth'})">Browse Verified Suppliers →</button>
-      <button class="btn-ghost" onclick="document.getElementById('reels').scrollIntoView({behavior:'smooth'})">▶ Watch Factory Reels</button>
+      <button class="btn-primary" id="browseBtn">Browse Verified Suppliers →</button>
+      <button class="btn-ghost" id="reelsBtn">▶ Watch Factory Reels</button>
     </div>
 
-    <div class="hero-stats">
-      <div><div class="stat-num">10<span>K+</span></div><div class="stat-label">Verified Factories</div></div>
-      <div><div class="stat-num">60<span>%</span></div><div class="stat-label">Avg. Cost Savings</div></div>
-      <div><div class="stat-num">$2<span>B+</span></div><div class="stat-label">Annual Trade Volume</div></div>
-    </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="hero-img-grid">
-      <div class="hero-tile">
-        <div class="tile-bg tile-1">🔬</div>
-        <div class="tile-label">High-end Surgical Manufacturing</div>
+    <!-- B2B REELS SECTION -->
+    <div class="sec-hdr" id="reels">
+      <div>
+        <h2>Global B2B Reels Section <span class="new-tag">Exclusive</span></h2>
       </div>
-      <div class="hero-tile">
-        <div class="tile-bg tile-2">🧥</div>
-        <div class="tile-label">Customized Sports Jackets Embossing</div>
+      <span class="see-all" id="seeAllReels">View all reels →</span>
+    </div>
+
+    <div class="reels-row">
+
+      <div class="reel-card" onclick="openChat('Factory 04')">
+        <div class="reel-bg rb1">
+          <div class="reel-silhouette"></div>
+        </div>
+        <div class="reel-cam-badge">🎬 HD</div>
+        <div class="reel-live-tag">LIVE</div>
+        <div class="reel-play"></div>
+        <div class="reel-grad">
+          <div class="reel-title-t">Custom Gym Wear Production Line — Factory 04</div>
+          <div class="reel-resp-t">⚡ ~2 hrs EST</div>
+          <button class="reel-cta-btn">Talk to Manufacturer</button>
+        </div>
       </div>
-      <div class="hero-tile">
-        <div class="tile-bg tile-3">⚽</div>
-        <div class="tile-label">Football Premium Stitching</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- GLOBAL B2B REELS SECTION -->
-<section class="reels-section" id="reels">
-  <div class="section-hdr">
-    <h2>Global B2B Reels Section</h2>
-    <span class="snew">Exclusive</span>
-    <span class="see-all">View all reels →</span>
-  </div>
-  <div class="reels-row">
-
-    <div class="reel-card">
-      <div class="reel-bg rb1">🏋️</div>
-      <div class="reel-play-overlay"></div>
-      <div class="reel-live">LIVE</div>
-      <div class="reel-cert">★ Verified</div>
-      <div class="reel-grad">
-        <div class="reel-title">Custom Gym Wear Production Line — Factory 04</div>
-        <div class="reel-resp">⚡ Responds ~2 hrs EST</div>
-        <div class="reel-bottom"><span class="reel-views">👁 14.2K</span><button class="reel-cta-btn" onclick="openChat('Factory 04')">Talk to Manufacturer</button></div>
+      <div class="reel-card" onclick="openChat('Factory 03')">
+        <div class="reel-bg rb2">
+          <div class="reel-silhouette"></div>
+        </div>
+        <div class="reel-cam-badge">🎬 HD</div>
+        <div class="reel-cert-tag">★ FDA</div>
+        <div class="reel-play"></div>
+        <div class="reel-grad">
+          <div class="reel-title-t">Custom Gym Wear Production Line — Factory 03</div>
+          <div class="reel-resp-t">⚡ ~4 hrs EST</div>
+          <button class="reel-cta-btn">Talk to Manufacturer</button>
+        </div>
       </div>
-    </div>
 
-    <div class="reel-card">
-      <div class="reel-bg rb2">🔬</div>
-      <div class="reel-play-overlay"></div>
-      <div class="reel-cert">★ FDA</div>
-      <div class="reel-grad">
-        <div class="reel-title">Precision Surgical Instruments — Apex Co.</div>
-        <div class="reel-resp">⚡ Responds ~4 hrs EST</div>
-        <div class="reel-bottom"><span class="reel-views">👁 9.8K</span><button class="reel-cta-btn" onclick="openChat('Apex Co.')">Talk to Manufacturer</button></div>
+      <div class="reel-card" onclick="openChat('Factory 04')">
+        <div class="reel-bg rb3">
+          <div class="reel-silhouette"></div>
+        </div>
+        <div class="reel-cam-badge">🎬 HD</div>
+        <div class="reel-cert-tag">★ FIFA</div>
+        <div class="reel-play"></div>
+        <div class="reel-grad">
+          <div class="reel-title-t">Custom Gym Wear Production Line — Factory 04</div>
+          <div class="reel-resp-t">⚡ ~3 hrs EST</div>
+          <button class="reel-cta-btn">Talk to Manufacturer</button>
+        </div>
       </div>
-    </div>
 
-    <div class="reel-card">
-      <div class="reel-bg rb3">⚽</div>
-      <div class="reel-play-overlay"></div>
-      <div class="reel-cert">★ FIFA</div>
-      <div class="reel-grad">
-        <div class="reel-title">Premium Football Stitching — Star Sports</div>
-        <div class="reel-resp">⚡ Responds ~3 hrs EST</div>
-        <div class="reel-bottom"><span class="reel-views">👁 22.1K</span><button class="reel-cta-btn" onclick="openChat('Star Sports')">Talk to Manufacturer</button></div>
+      <div class="reel-card" onclick="openChat('Factory 05')">
+        <div class="reel-bg rb4">
+          <div class="reel-silhouette"></div>
+        </div>
+        <div class="reel-cam-badge">🎬 HD</div>
+        <div class="reel-cert-tag">★ ISO</div>
+        <div class="reel-play"></div>
+        <div class="reel-grad">
+          <div class="reel-title-t">Custom Gym Wear Production Line — Factory 05</div>
+          <div class="reel-resp-t">⚡ ~2 hrs EST</div>
+          <button class="reel-cta-btn">Talk to Manufacturer</button>
+        </div>
       </div>
-    </div>
 
-    <div class="reel-card">
-      <div class="reel-bg rb4">🧥</div>
-      <div class="reel-play-overlay"></div>
-      <div class="reel-cert">★ Verified</div>
-      <div class="reel-grad">
-        <div class="reel-title">Team Uniform Custom Embossing — UniWear</div>
-        <div class="reel-resp">⚡ Responds ~2 hrs EST</div>
-        <div class="reel-bottom"><span class="reel-views">👁 7.4K</span><button class="reel-cta-btn" onclick="openChat('UniWear')">Talk to Manufacturer</button></div>
+      <div class="reel-card" onclick="openChat('Factory 06')">
+        <div class="reel-bg rb5">
+          <div class="reel-silhouette"></div>
+        </div>
+        <div class="reel-cam-badge">🎬 HD</div>
+        <div class="reel-cert-tag">★ Verified</div>
+        <div class="reel-play"></div>
+        <div class="reel-grad">
+          <div class="reel-title-t">Custom Gym Wear Production Line — Factory 06</div>
+          <div class="reel-resp-t">⚡ ~5 hrs EST</div>
+          <button class="reel-cta-btn">Talk to Manufacturer</button>
+        </div>
       </div>
+
     </div>
 
-    <div class="reel-card">
-      <div class="reel-bg rb5">🦷</div>
-      <div class="reel-play-overlay"></div>
-      <div class="reel-cert">★ ISO</div>
-      <div class="reel-grad">
-        <div class="reel-title">Dental Instrument CNC Line — MedCraft</div>
-        <div class="reel-resp">⚡ Responds ~6 hrs EST</div>
-        <div class="reel-bottom"><span class="reel-views">👁 5.6K</span><button class="reel-cta-btn" onclick="openChat('MedCraft')">Talk to Manufacturer</button></div>
+    <!-- CORE CATEGORY HUB -->
+    <div class="sec-hdr" style="margin-top:30px">
+      <div>
+        <h2>Core Category Hub & Micro-MOQ Filter</h2>
+        <div class="sec-sub">Premium blocks for Sialkot's main industries</div>
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- CORE CATEGORY HUB & MICRO-MOQ FILTER -->
-<div class="moq-bar">
-  <span class="moq-text"><strong>Filter:</strong></span>
-  <div class="fchip on">All Categories</div>
-  <div class="fchip">Surgical</div>
-  <div class="fchip">Sports Goods</div>
-  <div class="fchip">Uniforms</div>
-  <div class="fchip">Leather</div>
-  <div class="toggle-pill" style="margin-left:auto">
-    <label class="tog"><input type="checkbox" id="moqT"/><span class="tog-sl"></span></label>
-    <span class="tog-label">Show Low-MOQ / Dropship Friendly Supplies</span>
-  </div>
-</div>
-
-<section class="cat-section">
-  <div class="cat-grid">
-    <div class="cat-card">
-      <div class="cat-icon-wrap">🔬</div>
-      <div class="cat-name">Surgical & Dental Instruments</div>
-      <div class="cat-certs"><span class="cert-tag">FDA Compliant</span><span class="cert-tag">ISO 13485</span><span class="cert-tag">CE Marked</span></div>
-      <div class="cat-desc">Precision surgical tools and dental instruments manufactured to US import standards with full compliance documentation.</div>
-      <div class="cat-footer"><span class="cat-count">Verified Factory (336)</span><span class="cat-arr">→</span></div>
-    </div>
-    <div class="cat-card">
-      <div class="cat-icon-wrap">⚽</div>
-      <div class="cat-name">Sports Goods & Leather Wear</div>
-      <div class="cat-certs"><span class="cert-tag">FIFA Approved</span><span class="cert-tag">Custom OEM</span><span class="cert-tag">Low MOQ</span></div>
-      <div class="cat-desc">Sialkot produces 70% of the world's handsewn footballs. Boxing gear, gloves, cricket equipment — direct from the source.</div>
-      <div class="cat-footer"><span class="cat-count">Verified Factory (255)</span><span class="cat-arr">→</span></div>
-    </div>
-    <div class="cat-card">
-      <div class="cat-icon-wrap">🧥</div>
-      <div class="cat-name">Fitness & Team Wear / Custom Uniforms</div>
-      <div class="cat-certs"><span class="cert-tag">Custom Branding</span><span class="cert-tag">Sublimation</span><span class="cert-tag">MOQ 20 pcs</span></div>
-      <div class="cat-desc">Custom gym wear, team uniforms, sublimation printing — OEM & ODM with your logo starting at just 20 pieces per design.</div>
-      <div class="cat-footer"><span class="cat-count">Verified Factory (157)</span><span class="cat-arr">→</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PLATINUM SUPPLIERS -->
-<section class="platinum-section">
-  <div class="plat-hdr">
-    <div>
-      <h2>✦ Recommended Platinum Suppliers</h2>
-      <p>Hand-audited factories with proven US export records, English-speaking managers, and guaranteed response times.</p>
-    </div>
-    <button class="btn-ghost" style="align-self:flex-start;white-space:nowrap" onclick="bToast('Showing all 312 Platinum verified suppliers')">View All Platinum →</button>
-  </div>
-
-  <div class="sup-grid">
-
-    <div class="sup-card">
-      <div class="seal-badge"><div class="seal-inner"><span class="seal-icon">★</span>SialMade<br/>Certified</div></div>
-      <div class="sup-name">Apex Surgical Co.</div>
-      <div class="sup-meta">Export Regions: <strong>USA / Europe</strong></div>
-      <div class="sup-meta">Factory Size: <strong>250–400 workers</strong></div>
-      <div class="sup-resp">⚡ Responds in ~4 hrs EST</div>
-      <div class="sup-tags"><span class="stag">Surgical</span><span class="stag g">FDA Compliant</span><span class="stag">ISO 13485</span></div>
-      <div class="sup-products"><div class="prod-thumb">🔬</div><div class="prod-thumb">🦷</div><div class="prod-thumb">🏥</div></div>
-      <div class="ship-row">🚚 Ships to USA in <strong>18–22 days</strong> · DHL Express</div>
-      <div class="sup-footer"><span class="sup-flags">🇺🇸 🇬🇧 🇩🇪</span><span class="sup-moq">Min. order: $500</span></div>
-      <div class="sup-btns"><button class="sample-btn" onclick="openChat('Apex Surgical Co.')">📦 Sample</button><button class="msg-btn" onclick="openChat('Apex Surgical Co.')">Message Supplier</button></div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="filterSuppliers('surgical')">
+        <div class="cat-check">✓</div>
+        <div class="cat-icon">🔬</div>
+        <div class="cat-name">Surgical & Dental Instruments</div>
+        <div class="cat-count">Verified Factory (<strong>336</strong>)</div>
+      </div>
+      <div class="cat-card" onclick="filterSuppliers('sports')">
+        <div class="cat-check">✓</div>
+        <div class="cat-icon">⚽</div>
+        <div class="cat-name">Sports Goods & Leather Wear</div>
+        <div class="cat-count">Verified Factory (<strong>255</strong>)</div>
+      </div>
+      <div class="cat-card" onclick="filterSuppliers('uniforms')">
+        <div class="cat-check">✓</div>
+        <div class="cat-icon">🧥</div>
+        <div class="cat-name">Fitness & Team Wear / Custom Uniforms</div>
+        <div class="cat-count">Verified Factory (<strong>157</strong>)</div>
+      </div>
     </div>
 
-    <div class="sup-card">
-      <div class="seal-badge"><div class="seal-inner"><span class="seal-icon">★</span>SialMade<br/>Certified</div></div>
-      <div class="sup-name">Star Sports International</div>
-      <div class="sup-meta">Export Regions: <strong>USA / Europe</strong></div>
-      <div class="sup-meta">Factory Size: <strong>300–500 workers</strong></div>
-      <div class="sup-resp">⚡ Responds in ~3 hrs EST</div>
-      <div class="sup-tags"><span class="stag">Footballs</span><span class="stag g">FIFA Approved</span><span class="stag">Custom OEM</span></div>
-      <div class="sup-products"><div class="prod-thumb">⚽</div><div class="prod-thumb">🏈</div><div class="prod-thumb">🥊</div></div>
-      <div class="ship-row">🚚 Ships to USA in <strong>20–25 days</strong> · FedEx International</div>
-      <div class="sup-footer"><span class="sup-flags">🇺🇸 🇦🇺 🇫🇷</span><span class="sup-moq">Min. order: $300</span></div>
-      <div class="sup-btns"><button class="sample-btn" onclick="openChat('Star Sports International')">📦 Sample</button><button class="msg-btn" onclick="openChat('Star Sports International')">Message Supplier</button></div>
+  </div><!-- /left-col -->
+
+  <!-- ══ RIGHT COLUMN ══ -->
+  <div class="right-col">
+
+    <!-- FACTORY IMAGE TILES -->
+    <div class="tiles-row">
+      <div class="factory-tile ft1" onclick="openChat('Apex Surgical Co.')">
+        <div class="ft-grid"></div>
+        <div class="ft-glow"></div>
+        <div class="ft-machinery">⚙</div>
+        <div class="ft-label">High-end Surgical Manufacturing</div>
+      </div>
+      <div class="factory-tile ft2" onclick="openChat('UniWear Garment Factory')">
+        <div class="ft-grid"></div>
+        <div class="ft-glow"></div>
+        <div class="ft-machinery">🧥</div>
+        <div class="ft-play-btn"></div>
+        <div class="ft-label">Customized Sports Jackets Embossing</div>
+      </div>
+      <div class="factory-tile ft3" onclick="openChat('Star Sports International')">
+        <div class="ft-grid"></div>
+        <div class="ft-glow"></div>
+        <div class="ft-machinery">⚽</div>
+        <div class="ft-label">Football Premium Stitching</div>
+      </div>
     </div>
 
-    <div class="sup-card">
-      <div class="seal-badge"><div class="seal-inner"><span class="seal-icon">★</span>SialMade<br/>Certified</div></div>
-      <div class="sup-name">UniWear Garment Factory</div>
-      <div class="sup-meta">Export Regions: <strong>USA / Canada</strong></div>
-      <div class="sup-meta">Factory Size: <strong>150–250 workers</strong></div>
-      <div class="sup-resp">⚡ Responds in ~2 hrs EST</div>
-      <div class="sup-tags"><span class="stag">Sportswear</span><span class="stag g">MOQ 20 pcs</span><span class="stag">Custom Logo</span></div>
-      <div class="sup-products"><div class="prod-thumb">🧥</div><div class="prod-thumb">👕</div><div class="prod-thumb">🏋️</div></div>
-      <div class="ship-row">🚚 Ships to USA in <strong>18–22 days</strong> · DHL / FedEx</div>
-      <div class="sup-footer"><span class="sup-flags">🇺🇸 🇨🇦 🇸🇦</span><span class="sup-moq">Min. order: $200</span></div>
-      <div class="sup-btns"><button class="sample-btn" onclick="openChat('UniWear Garment Factory')">📦 Sample</button><button class="msg-btn" onclick="openChat('UniWear Garment Factory')">Message Supplier</button></div>
+    <!-- SUPPLIER FILTER BAR -->
+    <div class="sup-filter-bar">
+      <div>
+        <div class="sup-filter-title">Core Category Hub & Micro-MOQ Filter</div>
+        <div class="sup-filter-sub">Premium blocks for Sialkot's main industries</div>
+      </div>
+      <div class="moq-wrap">
+        <label class="tog"><input type="checkbox" id="moqT"/><span class="tog-sl"></span></label>
+        <span class="moq-lbl">Show Low-MOQ / Dropship Friendly Supplies</span>
+      </div>
     </div>
 
-    <div class="sup-card">
-      <div class="seal-badge"><div class="seal-inner"><span class="seal-icon">★</span>SialMade<br/>Certified</div></div>
-      <div class="sup-name">MedCraft Instruments</div>
-      <div class="sup-meta">Export Regions: <strong>USA / Europe</strong></div>
-      <div class="sup-meta">Factory Size: <strong>100–200 workers</strong></div>
-      <div class="sup-resp">⚡ Responds in ~5 hrs EST</div>
-      <div class="sup-tags"><span class="stag">Dental</span><span class="stag g">ISO 13485</span><span class="stag">CE Marked</span></div>
-      <div class="sup-products"><div class="prod-thumb">🦷</div><div class="prod-thumb">🔬</div><div class="prod-thumb">⚕️</div></div>
-      <div class="ship-row">🚚 Ships to USA in <strong>20–26 days</strong> · DHL Express</div>
-      <div class="sup-footer"><span class="sup-flags">🇺🇸 🇩🇪 🇬🇧</span><span class="sup-moq">Min. order: $400</span></div>
-      <div class="sup-btns"><button class="sample-btn" onclick="openChat('MedCraft Instruments')">📦 Sample</button><button class="msg-btn" onclick="openChat('MedCraft Instruments')">Message Supplier</button></div>
+    <!-- SUPPLIER GRID (2 rows × 3 cols) -->
+    <div class="sup-grid" id="supGrid">
+
+      <div class="sup-card" data-cat="surgical" data-id="apex-surgical">
+        <div class="seal-badge"><div class="seal-in"><span class="si">★</span>SialMade<br/>Certified</div></div>
+        <div class="v-check">✓</div>
+        <div class="s-name">Apex Surgical Co.</div>
+        <div class="s-meta">Export Regions: <strong>USA / Europe</strong></div>
+        <div class="s-meta">Factory Size: <strong>250–400 workers</strong></div>
+        <div class="s-resp">⚡ Responds ~4 hrs EST</div>
+        <div class="s-thumbs"><div class="s-thumb">🔬</div><div class="s-thumb">🦷</div><div class="s-thumb">🏥</div></div>
+        <button class="s-msg-btn" onclick="openChat('Apex Surgical Co.')">Message Supplier</button>
+      </div>
+
+      <div class="sup-card" data-cat="sports" data-id="star-sports">
+        <div class="seal-badge"><div class="seal-in"><span class="si">★</span>SialMade<br/>Certified</div></div>
+        <div class="v-check">✓</div>
+        <div class="s-name">Star Sports International</div>
+        <div class="s-meta">Export Regions: <strong>USA / Europe</strong></div>
+        <div class="s-meta">Factory Size: <strong>300–500 workers</strong></div>
+        <div class="s-resp">⚡ Responds ~3 hrs EST</div>
+        <div class="s-thumbs"><div class="s-thumb">⚽</div><div class="s-thumb">🏈</div><div class="s-thumb">🥊</div></div>
+        <button class="s-msg-btn" onclick="openChat('Star Sports International')">Message Supplier</button>
+      </div>
+
+      <div class="sup-card" data-cat="uniforms" data-id="uniwear">
+        <div class="seal-badge"><div class="seal-in"><span class="si">★</span>SialMade<br/>Certified</div></div>
+        <div class="v-check">✓</div>
+        <div class="s-name">UniWear Garment Factory</div>
+        <div class="s-meta">Export Regions: <strong>USA / Canada</strong></div>
+        <div class="s-meta">Factory Size: <strong>150–250 workers</strong></div>
+        <div class="s-resp">⚡ Responds ~2 hrs EST</div>
+        <div class="s-thumbs"><div class="s-thumb">🧥</div><div class="s-thumb">👕</div><div class="s-thumb">🏋️</div></div>
+        <button class="s-msg-btn" onclick="openChat('UniWear Garment Factory')">Message Supplier</button>
+      </div>
+
+      <div class="sup-card" data-cat="surgical" data-id="medcraft">
+        <div class="seal-badge"><div class="seal-in"><span class="si">★</span>SialMade<br/>Certified</div></div>
+        <div class="v-check">✓</div>
+        <div class="s-name">MedCraft Instruments</div>
+        <div class="s-meta">Export Regions: <strong>USA / Europe</strong></div>
+        <div class="s-meta">Factory Size: <strong>100–200 workers</strong></div>
+        <div class="s-resp">⚡ Responds ~5 hrs EST</div>
+        <div class="s-thumbs"><div class="s-thumb">🦷</div><div class="s-thumb">🔬</div><div class="s-thumb">⚕️</div></div>
+        <button class="s-msg-btn" onclick="openChat('MedCraft Instruments')">Message Supplier</button>
+      </div>
+
+      <div class="sup-card" data-cat="sports" data-id="power-boxing">
+        <div class="seal-badge"><div class="seal-in"><span class="si">★</span>SialMade<br/>Certified</div></div>
+        <div class="v-check">✓</div>
+        <div class="s-name">Power Boxing Co.</div>
+        <div class="s-meta">Export Regions: <strong>USA / Australia</strong></div>
+        <div class="s-meta">Factory Size: <strong>80–150 workers</strong></div>
+        <div class="s-resp">⚡ Responds ~3 hrs EST</div>
+        <div class="s-thumbs"><div class="s-thumb">🥊</div><div class="s-thumb">🏋️</div><div class="s-thumb">🧤</div></div>
+        <button class="s-msg-btn" onclick="openChat('Power Boxing Co.')">Message Supplier</button>
+      </div>
+
+      <div class="sup-card" data-cat="sports" data-id="elite-sports">
+        <div class="seal-badge"><div class="seal-in"><span class="si">★</span>SialMade<br/>Certified</div></div>
+        <div class="v-check">✓</div>
+        <div class="s-name">Elite Sports Exports</div>
+        <div class="s-meta">Export Regions: <strong>USA / Europe</strong></div>
+        <div class="s-meta">Factory Size: <strong>200–350 workers</strong></div>
+        <div class="s-resp">⚡ Responds ~4 hrs EST</div>
+        <div class="s-thumbs"><div class="s-thumb">⚽</div><div class="s-thumb">🏐</div><div class="s-thumb">🏉</div></div>
+        <button class="s-msg-btn" onclick="openChat('Elite Sports Exports')">Message Supplier</button>
+      </div>
+
+    </div><!-- /sup-grid -->
+  </div><!-- /right-col -->
+
+  <!-- ── TRUST SECTION (full width) ── -->
+  <section class="trust-section">
+    <div class="trust-title">
+      <h2>Why 5,000+ US Buyers Trust SialMade</h2>
+      <p>The safeguards Alibaba doesn't offer for the Pakistani market.</p>
     </div>
-
-    <div class="sup-card">
-      <div class="seal-badge"><div class="seal-inner"><span class="seal-icon">★</span>SialMade<br/>Certified</div></div>
-      <div class="sup-name">Power Boxing Co.</div>
-      <div class="sup-meta">Export Regions: <strong>USA / Australia</strong></div>
-      <div class="sup-meta">Factory Size: <strong>80–150 workers</strong></div>
-      <div class="sup-resp">⚡ Responds in ~3 hrs EST</div>
-      <div class="sup-tags"><span class="stag">Boxing</span><span class="stag g">Custom OEM</span><span class="stag">Low MOQ</span></div>
-      <div class="sup-products"><div class="prod-thumb">🥊</div><div class="prod-thumb">🏋️</div><div class="prod-thumb">🧤</div></div>
-      <div class="ship-row">🚚 Ships to USA in <strong>18–24 days</strong> · FedEx</div>
-      <div class="sup-footer"><span class="sup-flags">🇺🇸 🇦🇺 🇨🇦</span><span class="sup-moq">Min. order: $250</span></div>
-      <div class="sup-btns"><button class="sample-btn" onclick="openChat('Power Boxing Co.')">📦 Sample</button><button class="msg-btn" onclick="openChat('Power Boxing Co.')">Message Supplier</button></div>
+    <div class="trust-grid">
+      <div class="tc"><div class="tc-icon">🛡</div><div class="tc-title">Trade Protection Guarantee</div><div class="tc-desc">Escrow holds your payment until you confirm delivery. Full refund if anything goes wrong.</div></div>
+      <div class="tc"><div class="tc-icon">🏭</div><div class="tc-title">In-Person Factory Audit</div><div class="tc-desc">Our Sialkot team physically visits every factory before approval. No fake listings.</div></div>
+      <div class="tc"><div class="tc-icon">📹</div><div class="tc-title">Live Factory Video Tours</div><div class="tc-desc">Video call with the factory floor before you wire a single dollar — available in EST.</div></div>
+      <div class="tc"><div class="tc-icon">⚡</div><div class="tc-title">Guaranteed Response Time</div><div class="tc-desc">Platinum suppliers must respond within 4 hrs during US business hours. Contractually.</div></div>
     </div>
-
-    <div class="sup-card">
-      <div class="seal-badge"><div class="seal-inner"><span class="seal-icon">★</span>SialMade<br/>Certified</div></div>
-      <div class="sup-name">Elite Sports Exports</div>
-      <div class="sup-meta">Export Regions: <strong>USA / Europe</strong></div>
-      <div class="sup-meta">Factory Size: <strong>200–350 workers</strong></div>
-      <div class="sup-resp">⚡ Responds in ~4 hrs EST</div>
-      <div class="sup-tags"><span class="stag">Sports</span><span class="stag g">FIFA Approved</span><span class="stag">ISO 9001</span></div>
-      <div class="sup-products"><div class="prod-thumb">⚽</div><div class="prod-thumb">🏐</div><div class="prod-thumb">🏉</div></div>
-      <div class="ship-row">🚚 Ships to USA in <strong>20–25 days</strong> · DHL / FedEx</div>
-      <div class="sup-footer"><span class="sup-flags">🇺🇸 🇬🇧 🇫🇷</span><span class="sup-moq">Min. order: $350</span></div>
-      <div class="sup-btns"><button class="sample-btn" onclick="openChat('Elite Sports Exports')">📦 Sample</button><button class="msg-btn" onclick="openChat('Elite Sports Exports')">Message Supplier</button></div>
+    <div class="cert-bar">
+      <div class="cb">🔬 <div>FDA Compliant<small>Surgical suppliers</small></div></div>
+      <div class="cb">🏅 <div>ISO 9001 · 13485<small>Quality certified</small></div></div>
+      <div class="cb">✅ <div>CE Marked<small>EU & US standards</small></div></div>
+      <div class="cb">⚽ <div>FIFA Approved<small>Sports goods</small></div></div>
+      <div class="cb">📦 <div>DHL / FedEx<small>Verified freight</small></div></div>
     </div>
+  </section>
 
-  </div>
-</section>
+</div><!-- /main-wrap -->
 
-<!-- WHY TRUST -->
-<section class="trust-section">
-  <div class="trust-title">
-    <h2>Why 5,000+ US Buyers Trust SialMade</h2>
-    <p>The safeguards Alibaba doesn't offer for the Pakistani market.</p>
-  </div>
-  <div class="trust-grid">
-    <div class="tc"><div class="tc-icon">🛡</div><div class="tc-title">Trade Protection Guarantee</div><div class="tc-desc">Escrow holds your payment until you confirm delivery. Full refund if anything goes wrong.</div></div>
-    <div class="tc"><div class="tc-icon">🏭</div><div class="tc-title">In-Person Factory Audit</div><div class="tc-desc">Our Sialkot team physically visits every factory before approval. No fake listings.</div></div>
-    <div class="tc"><div class="tc-icon">📹</div><div class="tc-title">Live Factory Video Tours</div><div class="tc-desc">Video call with the factory floor before you wire a single dollar — available in EST.</div></div>
-    <div class="tc"><div class="tc-icon">⚡</div><div class="tc-title">Guaranteed Response Time</div><div class="tc-desc">Platinum suppliers must respond within 4 hrs during US business hours. Contractually.</div></div>
-  </div>
-  <div class="cert-bar">
-    <div class="cb">🔬 <div>FDA Compliant<small>Surgical suppliers</small></div></div>
-    <div class="cb">🏅 <div>ISO 9001 · 13485<small>Quality certified</small></div></div>
-    <div class="cb">✅ <div>CE Marked<small>EU & US standards</small></div></div>
-    <div class="cb">⚽ <div>FIFA Approved<small>Sports goods</small></div></div>
-    <div class="cb">📦 <div>DHL / FedEx<small>Verified freight</small></div></div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-grid">
     <div>
@@ -625,12 +554,12 @@ footer{border-top:1px solid var(--border);padding:40px 48px}
   </div>
 </footer>
 
-<!-- CHAT -->
+<!-- ── CHAT MODAL ── -->
 <div class="chat-backdrop" id="chatModal">
   <div class="chat-win">
     <div class="chat-hdr">
       <div class="chat-av">🏭</div>
-      <div><div class="chat-sup" id="chatName">Apex Surgical Co.</div><div class="chat-online">● Online · Responds in ~4 hrs EST</div></div>
+      <div><div class="chat-sup" id="chatName">Supplier</div><div class="chat-online">● Online · Responds in ~4 hrs EST</div></div>
       <button class="chat-x" onclick="document.getElementById('chatModal').classList.remove('open')">×</button>
     </div>
     <div class="chat-body" id="chatBody">
@@ -644,6 +573,7 @@ footer{border-top:1px solid var(--border);padding:40px 48px}
 </div>
 
 <script>
+// Chat
 function openChat(name){
   document.getElementById('chatName').textContent=name||'Supplier';
   document.getElementById('chatBody').innerHTML=`<div class="cmsg fac"><div class="cbubble">Hello! I'm the export manager at ${name}. How can I assist you? We ship to the USA via DHL/FedEx — MOQ starts at 50 units for custom orders.</div><div class="ctime">Just now</div></div>`;
@@ -660,15 +590,74 @@ function sendMsg(){
 }
 document.getElementById('chatInp').addEventListener('keydown',e=>{if(e.key==='Enter')sendMsg()});
 document.getElementById('chatModal').addEventListener('click',e=>{if(e.target===document.getElementById('chatModal'))document.getElementById('chatModal').classList.remove('open')});
-document.getElementById('moqT').addEventListener('change',function(){this.nextElementSibling.style.background=this.checked?'var(--gold)':'var(--border2)'});
-document.querySelectorAll('.fchip').forEach(c=>c.addEventListener('click',function(){document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));this.classList.add('on')}));
-function bToast(msg,col){const t=document.createElement('div');const clr={green:['#14532d','#22c55e','✓'],red:['#7f1d1d','#ef4444','✗'],amber:['#451a03','#f59e0b','ℹ']};const c=clr[col||'green'];t.style.cssText=`position:fixed;bottom:24px;right:24px;z-index:300;background:${c[0]};border:1px solid ${c[1]};border-radius:9px;padding:13px 18px;color:#fff;font-size:13px;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.5)`;t.textContent=c[2]+' '+msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000)}
-document.querySelector('.s-btn').addEventListener('click',function(){const q=document.querySelector('.search-wrap input').value.trim();bToast(q?'Showing factories for: "'+q+'"':'Browsing all 2,000+ verified suppliers');document.querySelector('.platinum-section').scrollIntoView({behavior:'smooth'})});
-document.querySelector('.search-wrap input').addEventListener('keydown',e=>{if(e.key==='Enter')document.querySelector('.s-btn').click()});
-document.querySelector('.see-all').addEventListener('click',()=>document.getElementById('reels').scrollIntoView({behavior:'smooth'}));
-document.querySelectorAll('.cat-card').forEach(c=>c.addEventListener('click',function(){document.querySelector('.platinum-section').scrollIntoView({behavior:'smooth'})}));
-document.querySelector('[title="Inquiry Basket"]').addEventListener('click',e=>{e.preventDefault();bToast('Inquiry basket is empty — message suppliers to start','amber')});
-document.querySelectorAll('.footer-col a[href="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector('.platinum-section').scrollIntoView({behavior:'smooth'})}));
+
+// Toast
+function bToast(msg,col){
+  const t=document.createElement('div');
+  const clr={green:['#14532d','#22c55e','✓'],amber:['#451a03','#f59e0b','ℹ'],red:['#7f1d1d','#ef4444','✗']};
+  const c=clr[col||'green'];
+  t.style.cssText=`position:fixed;bottom:24px;right:24px;z-index:300;background:${c[0]};border:1px solid ${c[1]};border-radius:9px;padding:13px 18px;color:#fff;font-size:13px;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.5)`;
+  t.textContent=c[2]+' '+msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000);
+}
+
+// Category filter — updates supplier grid and saves to localStorage
+function filterSuppliers(cat){
+  localStorage.setItem('sm_interest',cat);
+  const cards=document.querySelectorAll('#supGrid .sup-card');
+  const labels={surgical:'Surgical & Dental',sports:'Sports Goods',uniforms:'Fitness & Uniforms'};
+  bToast('Showing '+labels[cat]+' suppliers');
+  cards.forEach(c=>{
+    c.style.transition='opacity .3s,transform .3s';
+    if(c.dataset.cat===cat){c.style.opacity='1';c.style.transform='scale(1)';c.style.order='0'}
+    else{c.style.opacity='.4';c.style.transform='scale(.97)';c.style.order='1'}
+  });
+}
+
+// Personalization on load — restore last interest from localStorage
+(function(){
+  const saved=localStorage.getItem('sm_interest');
+  if(saved){
+    setTimeout(()=>{
+      const cards=document.querySelectorAll('#supGrid .sup-card');
+      cards.forEach(c=>{
+        if(c.dataset.cat===saved){c.style.order='0'}
+        else{c.style.opacity='.6';c.style.order='1'}
+      });
+    },300);
+  }
+})();
+
+// Button wires
+document.getElementById('browseBtn').addEventListener('click',()=>document.querySelector('.sup-grid').scrollIntoView({behavior:'smooth'}));
+document.getElementById('reelsBtn').addEventListener('click',()=>document.getElementById('reels').scrollIntoView({behavior:'smooth'}));
+document.getElementById('seeAllReels').addEventListener('click',()=>document.getElementById('reels').scrollIntoView({behavior:'smooth'}));
+document.getElementById('cartBtn').addEventListener('click',e=>{e.preventDefault();bToast('Inquiry basket is empty — message suppliers to start','amber')});
+document.getElementById('searchBtn').addEventListener('click',function(){
+  const q=document.getElementById('searchInput').value.trim();
+  bToast(q?'Showing factories for: "'+q+'"':'Browsing all 2,000+ verified suppliers');
+  document.querySelector('.sup-grid').scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('searchBtn').click()});
+
+// MOQ toggle
+document.getElementById('moqT').addEventListener('change',function(){
+  bToast(this.checked?'Showing Low-MOQ & Dropship friendly suppliers':'Showing all suppliers','green');
+});
+
+// Footer links
+document.querySelectorAll('.footer-col a[href="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector('.sup-grid').scrollIntoView({behavior:'smooth'})}));
+
+// Apply featured order set by admin panel
+(function applyFeaturedOrder(){
+  const saved=localStorage.getItem('sm_featured');
+  if(!saved)return;
+  const data=JSON.parse(saved);
+  const grid=document.getElementById('supGrid');
+  data.forEach((item,idx)=>{
+    const card=grid.querySelector(`[data-id="${item.id}"]`);
+    if(card){card.style.order=idx;card.style.display=item.visible?'':'none'}
+  });
+})();
 </script>
 </body>
 </html>
